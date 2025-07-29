@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Web dev mastery/node_modules/bootstrap/dist/css/bootstrap.css">
+    
+    <link rel="stylesheet" href="/Web dev mastery/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body style="height: 100vh;" class="d-flex justify-content-center align-items-center flex-column">
+    <div id="quiz-container">
+        <div id="quiz-header" class="d-flex justify-content-between" style="width: 600px;">
+            <h3 id="Question">What is Hello</h3>
+            <div class="d-flex">
+                <h4 class="bi bi-stopwatch-fill" id="clock"></h4>
+                <h4 id="tim" style="color: red;"></h4>
+                <h4 style="color: red;">s</h4>
+            </div>
+        </div>
+
+        <form action="" id="quizForm" class="d-flex flex-column" style="width: 600px;">
+            <label class="options" id="cho1">
+                <input type="radio" name="ans" id="ch1" required>
+                <span id="opt1">Opt1</span>
+            </label>
+            <label class="options" id="cho2">
+                <input type="radio" name="ans" id="ch2" required>
+                <span id="opt2">Opt2</span>
+            </label>
+            <label class="options" id="cho3">
+                <input type="radio" name="ans" id="ch3" required>
+                <span id="opt3">Opt3</span>
+            </label>
+            <label class="options" id="cho4">
+                <input type="radio" name="ans" id="ch4" required>
+                <span id="opt4">Opt4</span>
+            </label>
+            <button id="btnSubmit" type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+    </div>
+
+    <div style="display: none;" id="result">
+        <h2 style="color: green;">🎉 Congratulations! <span id="score"></span></h2>
+        
+    </div>
+
+
+
+    <script type="text/javascript">
+        let api = "qa.json";
+
+        let cnt = 0;
+        let timer = 10;
+        let score = 0;
+        let currentQuestion;
+        let timeInt;
+
+        const quizForm = document.getElementById('quizForm');
+
+        quizForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            incCount();
+        });
+
+        function fetching(){
+            fetch(api)
+                .then(response => response.json())
+                .then(data => {
+                if(cnt == data.length){
+                    document.getElementById("quiz-container").style.display = "none";
+                    document.getElementById("result").style.display = "block";
+                    console.log(document.getElementById("result"));
+                    document.getElementById("score").innerHTML = `Your score is ${score}`;
+                    console.log(score);
+                    
+                    return;
+                }
+                currentQuestion = data[cnt];
+
+                document.getElementById("Question").textContent = currentQuestion.Q;
+                document.getElementById("opt1").textContent = currentQuestion.Opt1;
+                document.getElementById("ch1").value = currentQuestion.Opt1;
+
+                document.getElementById("opt2").textContent = currentQuestion.Opt2;
+                document.getElementById("ch2").value = currentQuestion.Opt2;
+
+                document.getElementById("opt3").textContent = currentQuestion.Opt3;
+                document.getElementById("ch3").value = currentQuestion.Opt3;
+
+                document.getElementById("opt4").textContent = currentQuestion.Opt4;
+                document.getElementById("ch4").value = currentQuestion.Opt4;
+
+                startTimer();
+                })
+                .catch(error => {
+                console.error("Error loading JSON:", error);
+            });
+        }
+
+        function incCount(){
+            clearInterval(timeInt);
+
+            const selectedOption = document.querySelector('input[name="ans"]:checked');
+            
+            if (selectedOption) {
+                if (selectedOption.value === currentQuestion.ans) {
+                    score++;
+                }
+                selectedOption.checked = false;
+            }
+            cnt++;
+            fetching();
+        }
+        function startTimer(){
+            timer = 10;
+            document.getElementById("tim").textContent = timer;
+            timeInt = setInterval(() => {
+                timer--;
+                document.getElementById("tim").textContent = timer;
+                if(timer <= 0) {
+                    incCount();
+                }
+            }, 1000);
+        }
+
+        fetching();
+
+
+    </script>
+</body>
+</html>

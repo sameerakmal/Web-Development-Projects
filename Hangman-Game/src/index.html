@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Web dev mastery/node_modules/bootstrap/dist/css/bootstrap.css">
+    
+    <link rel="stylesheet" href="/Web dev mastery/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="/Web dev mastery/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+        Launch Modal
+    </button> -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+           <div class="modal-content">
+                <div class="modal-body text-center">
+                    <img src="../img/lost.gif" alt="" width="200px">
+                    <h4>Game Over!</h4>
+                    <p>The correct word was : <b>rainbow</b></p>
+                    <button data-bs-dismiss = "modal" onclick="location.reload()">Play Again</button>
+                </div>
+           </div> 
+        </div>
+    </div>
+
+    <h4 class="game-name fw-bold" >HangMan Game</h4>
+    <div class="cont">
+        <div class="hangman-box">
+            <img src="../img/hangman-0.svg" alt="">   
+        </div>
+
+        <div class="gamebox">
+            <ul class="word-display">
+            </ul>
+
+            <h6 class="hint-text">
+                Hint :
+                <b> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, minima?</b>
+            </h6>
+            <h5 class="guesses-text">
+                Incorrect Guesses :
+                <b>0 / 6</b>
+            </h5>
+            <div class="keyboard">
+                
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

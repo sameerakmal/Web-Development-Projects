@@ -1,0 +1,26 @@
+[
+    {
+        "Q": "What is the capital of India?",
+        "Opt1": "Delhi",
+        "Opt2": "Mumbai",
+        "Opt3": "Vishakapatnam",
+        "Opt4": "Pune",
+        "ans" : "Delhi"
+    },
+    {
+        "Q": "Which language runs in the browser?",
+        "Opt1": "Java",
+        "Opt2": "C",
+        "Opt3": "Python",
+        "Opt4": "JavaScript",
+        "ans" : "JavaScript"
+    },
+    {
+        "Q": "Who is the founder of Microsoft?",
+        "Opt1": "Steve Jobs",
+        "Opt2": "Elon Musk",
+        "Opt3": "Bill Gates",
+        "Opt4": "Mark Zuckerberg",
+        "ans" : "Bill Gates"
+    }
+]

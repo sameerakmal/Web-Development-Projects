@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'ds-digi';
+    src: url('fonts/DS-DIGI.TTF') format('truetype');
+}
+body {
+    margin: 0;
+    font-family: 'ds-digi';
+    color: #FF9500;
+    height: 100vh;
+    position: relative;
+}
+
+.time {
+    font-size: 200px;
+    position: relative;
+}
+
+#format {
+    position: absolute;
+    font-size: 40px;
+    right: -50px;
+    bottom: 70px;
+}
+.digit {
+    width: 0.5em;
+    text-align: center;
+}
+.btns-cont {
+    position: absolute; 
+    top: 20px;
+    right: 20px; 
+}
+.btn.active {
+    background-color: #FF9500;
+    color: black;
+    border-color: #FF9500;
+}
+.date-box{
+    font-size: 40px;
+    text-align: center;
+}
